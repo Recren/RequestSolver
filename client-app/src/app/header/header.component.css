@@ -1,0 +1,12 @@
+.header-container{
+    width: 100vw;
+    height: clamp(100px, 10vh, 150px);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.company-text{
+    font-size: 40px;
+    font-weight: bold
+}

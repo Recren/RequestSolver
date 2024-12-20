@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="top-level-content">
+  <select class="sort-query">
+    <option>Date</option>
+  </select>
+  <p class="user-welcome">Welcome Steven!</p>
+  <button class="create-request-btn">Create</button>
+</div>
+<div class="requests-container">
+  <ng-container *ngFor="let request of requestsList">
+    <app-request-card
+                      [request_id]="request.request_id"
+                      [title]="request.title"
+                      [assigned_to]="request.assigned_to"
+                      [assigned_by]="request.assigned_by"
+                      [date_assigned]="request.date_assigned"
+                      [date_due]="request.date_due"
+                      [level_of_severity]="request.level_of_severity"
+                      [request_description]="request.request_description">
+
+    </app-request-card>
+  </ng-container>
+
+</div>

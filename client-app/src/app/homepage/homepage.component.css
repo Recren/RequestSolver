@@ -1,0 +1,43 @@
+p {
+  margin: 0
+}
+.top-level-content {
+  height: 170px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sort-query{
+    width: clamp(200px, 15vw, 300px);
+    height: 50px;
+    font-size: 32px;
+    text-align: center;
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+.user-welcome {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.create-request-btn {
+  width: clamp(200px, 15vw, 300px);
+  height: 50px;
+  font-size: 32px;
+  text-align: center;
+  background-color: white;
+  border-radius: 12px;
+  border: none;
+}
+
+.requests-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
