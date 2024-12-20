@@ -1,10 +1,10 @@
 <app-header></app-header>
-<div class="top-level-content">
+<div class="top-level-content"> 
   <select class="sort-query">
     <option>Date</option>
   </select>
   <p class="user-welcome">Welcome Steven!</p>
-  <button class="create-request-btn">Create</button>
+  <button class="create-request-btn" (click)="displayCreateNewRequestForm($event)">Create</button>
 </div>
 <div class="requests-container">
   <ng-container *ngFor="let request of requestsList">
@@ -20,5 +20,60 @@
 
     </app-request-card>
   </ng-container>
-
 </div>
+<ng-container *ngIf="displayCreateRequestForm">
+  <div class="dim-background" (click)="closeForm($event)"></div>
+  <form #requestForm="ngForm" (ngSubmit)="submitRequest()" class="request-form" >
+
+    <h1>Create new Request</h1>
+    <div class="label-input">
+      <label for="title">Title of Request</label>
+      <input type="text" name="title" [(ngModel)]="formData.title" #title="ngModel" required/>
+      <small *ngIf="title.errors?.['required'] && title.touched">Title of request required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="title">Level of Severity</label>
+      <select name="severity" [(ngModel)]="formData.severity" #severity="ngModel" required>
+        <option value="=Low">Low Severity</option>
+        <option value="Medium">Medium Severity</option>
+        <option value="High">High Severity</option>
+        <option value="Critical">Critical Severity</option>
+      </select>
+      <small *ngIf="severity.errors?.['required'] && severity.touched">Severity level required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="assigned_to">Assign to:</label>
+      <input type="text" name="assigned_to" [(ngModel)]="formData.assigned_to" #assigned_to="ngModel" required/>
+      <small *ngIf="assigned_to.errors?.['required'] && assigned_to.touched">Assignee required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="assigned_by">Assigned by:</label>
+      <input type="text" name="assigned_by" [(ngModel)]="formData.assigned_by"  #assigned_by="ngModel" required/>
+      <small *ngIf="assigned_by.errors?.['required'] && assigned_by.touched">Assigner required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="date_due">Date Due:</label>
+      <input type="text" name="date_due" [(ngModel)]="formData.date_due" #date_due="ngModel" required/>
+      <small *ngIf="date_due.errors?.['required'] && date_due.touched">Date due required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="date_assigned">Date Assigned:</label>
+      <input type="text" name="date_assigned" [(ngModel)]="formData.date_assigned" #date_assigned="ngModel" required />
+      <small *ngIf="date_assigned.errors?.['required'] && date_assigned.touched">Date assigned required</small>
+    </div>
+
+    <div class="label-input">
+      <label for="request_description">Bug Description:</label>
+      <textarea style="height: 150px; width: 400px;" type="text" name="request_description" [(ngModel)]="formData.request_description" #request_description="ngModel" required>
+      </textarea>
+      <small *ngIf="request_description.errors?.['required'] && request_description.touched">Please add a description of the request</small>
+    </div>
+
+    <button class="submit-form" type="submit" [disabled]="requestForm.invalid">Create Request</button>
+  </form>
+</ng-container>
