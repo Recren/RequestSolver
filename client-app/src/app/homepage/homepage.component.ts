@@ -30,6 +30,12 @@ export class HomepageComponent implements OnInit{
     e.preventDefault()
     this.displayCreateRequestForm = true
   }
+
+  closeForm(e: Event) {
+    e.preventDefault()
+    this.displayCreateRequestForm = false
+  }
+
   submitRequest() {
     console.log(this.formData)
     //Take form off screen and process the request
@@ -53,10 +59,6 @@ export class HomepageComponent implements OnInit{
       date_assigned: '',
       request_description: ''
     }
-  }
-
-  closeForm() {
-    this.displayCreateNewRequestForm
   }
 
 

@@ -22,7 +22,7 @@
   </ng-container>
 </div>
 <ng-container *ngIf="displayCreateRequestForm">
-  <div class="dim-background" (click)="closeForm()"></div>
+  <div class="dim-background" (click)="closeForm($event)"></div>
   <form #requestForm="ngForm" (ngSubmit)="submitRequest()" class="request-form" >
 
     <h1>Create new Request</h1>
